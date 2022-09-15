@@ -1,0 +1,11 @@
+@mixin flex($df: flex, $jc: start, $ai: start) {
+    display: $df;
+    justify-content: $jc;
+    align-items: $ai;
+    flex-wrap: wrap;
+    @if $ai == center {
+        border: solid 10px red;
+    } @else {
+        border: solid 0.5px green;
+    }
+}

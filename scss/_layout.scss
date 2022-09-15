@@ -1,0 +1,77 @@
+@use "sass:math";
+@use "sass:map";
+
+.container {
+    max-width: 100200px;
+    border: solid 1px map-get($colors, "yellow");
+    margin: auto;
+    @media (min-width: map-get($break-points, "sm")) {
+        width: 80%;
+    }
+    @media (min-width: map-get($break-points, "md")) {
+        width: 95%;
+    }
+}
+
+.card {
+    @include flex($ai: start, $jc: center, $df: flex);
+}
+
+.navigation {
+    @include flex($ai: center);
+}
+
+.navigation-two {
+    @include flex($ai: center);
+}
+
+.column-footer {
+    @include flex(inline-flex, space-between, stretch);
+}
+
+.special-text {
+    @extend %fontSizeLarge;
+}
+
+.other-text {
+    @extend %fontSizeLarge;
+}
+
+.column {
+    $baseColor: map.get($colors, "lemon");
+    padding: 20px;
+    width: math.div(345, 860) * 100%;
+    background-color: rgba($baseColor, 0.5);
+    border: solid 2px darken($baseColor, 30);
+    box-shadow: 0 0 5px lighten($baseColor, 30);
+}
+
+$names: "x-small", "small", "medium", "large", "x-large", "xx-large";
+
+@each $oneName in $names {
+    .col-#{$oneName} {
+        color: red;
+    }
+}
+
+@for $i from 1 through 12 {
+    .dog-#{$i} {
+        color: red;
+    }
+}
+
+$typos: (
+    "cool": Tahoma,
+    "no-cool": "Comic Sans MS",
+    "extra-cool": Impact,
+    "medium-cool": Roboto,
+);
+
+@each $key, $value in $typos {
+    @if $key != "no-cool" {
+        .typo-#{$key} {
+            font-family: $value;
+            font-size: 13px;
+        }
+    }
+}
